@@ -30,7 +30,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
-get_ipython().run_line_magic('matplotlib', 'inline')
+# get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 #%%
@@ -47,6 +47,7 @@ plt.scatter(df[50: 100]['sepal length (cm)'], df[50: 100]['sepal width (cm)'], c
 plt.xlabel('sepal length')
 plt.ylabel('sepal width')
 plt.legend()
+plt.show()
 
 
 #%%
@@ -62,8 +63,7 @@ class Model:
     def __init__(self):
         self.w = np.ones(len(data[0]) - 1, dtype=np.float32)
         self.b = 0
-        self.l_rate = 0.001
-        # self.data = data
+        self.l_rate = 0.01
 
     def sign(self, x, w, b):
         y = np.dot(x, w) + b
@@ -94,9 +94,9 @@ perceptron.fit(X, y)
 
 
 #%%
-plt.figure(figsize=(10,10))
+plt.figure(figsize=(10,5))
 
-x_points = np.linspace(3, 7, 10)
+x_points = np.linspace(4, 7, 10)
 y_ = -(perceptron.w[0] * x_points + perceptron.b) / perceptron.w[1]
 plt.plot(x_points, y_)
 
@@ -105,4 +105,4 @@ plt.plot(data[50:100, 0], data[50:100, 1], 'bo', color='orange', label='1')
 plt.xlabel('sepal length')
 plt.ylabel('sepal width')
 plt.legend()
-
+plt.show()
